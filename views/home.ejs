@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://kit.fontawesome.com/77f4d8c4b1.js" crossorigin="anonymous"></script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1 id="heading">TODO APP</h1>
+        <form method="POST" action="createtask">
+        <div class="description">
+            <h4>DESCRIPTION</h2>
+            <textarea type="text" id="description" name="description" required placeholder="What do you need to do ?"></textarea><br><br>
+           <div class="fieldsets"> 
+            <fieldset id="category">
+                <legend>Category</legend>
+                <p>
+                   
+                   <select name="category">
+                       <option selected disabled hidden>choose category</option>
+                     <option value = "Personal">Personal</option>
+                     <option value = "Work">Work</option>
+                     <option value = "School">School</option>
+                     <option value = "Cleaning">Cleaning</option>
+                     <option value="Others">Others</option>
+                   </select>
+                </p>
+             </fieldset>
+             <fieldset id="date">
+                 <legend>Due Date</legend>
+                 <p>
+                    <input type="date"  name="date" required>
+                 </p>
+             </fieldset>
+             
+        </div>
+
+    <div class="add-delete-button">
+            <div class="add-button">
+                <i id="plus" class="fas fa-plus"></i>
+                <button id="add" type="submit"  >ADD</button>
+            </div>
+                
+
+        
+        </div>
+        </div>
+        </form>
+        <hr>
+        
+            <!-- <div class="delete-button">
+                <i id="trash" class="far fa-trash-alt"></i>
+                <button id="delete" type="submit" name="delete" formaction="deletetask">DELETE</button>
+            </div>  -->
+<!--     Displaying Already Created Tasks -->
+        <h1>Tasks to Complete</h1>
+        <div>
+            <ol>
+                <% for(let i of task) { %>
+                  
+                <li><div class="display-task">
+                   
+                    <div class="desc-date">  <p> <a href="deletetask/?id=<%= i._id %>"><i class="far fa-window-close"></i></a> &nbsp;<%= i.description %></p>
+                   <div class="date-box"> <p><i class="far fa-calendar-alt "></i>&nbsp;<%= i.date %></p>
+                     </div>
+                     
+                </div>
+                <div class="category">
+                    <p class="available_category_p"><%= i.category%></p></div>
+
+                    </div>
+                </li><hr>
+                <% } %>
+            </ol>
+        </div>
+    
+    </div>
+    <script src="/js/checked.js"></script>
+</body>
+</html>
